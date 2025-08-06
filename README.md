@@ -23,7 +23,10 @@ This project serves as a practical example of controlling interactive command-li
     ```
 
 ## ⚙️ Setup
-
+**check if rust is installed**
+```bash
+rustc --version
+```
 **install rust (if not installed)**
 
 ```bash
