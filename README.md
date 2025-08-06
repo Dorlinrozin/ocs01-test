@@ -88,6 +88,7 @@ Execute the Python script:
 python3 menu_automator.py 
 ```
 Enter the number of times to repeat the test cycle and the delay in seconds between each cycle
+
 After running successfully close from screen with pressing `Ctrl A+D`
 
 *for this task the ei file contains the interface for contract at address octBUHw585BrAMPMLQvGuWx4vqEsybYH9N7a3WNj1WBwrDn, do not modify it*
