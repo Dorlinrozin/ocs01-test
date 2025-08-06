@@ -34,15 +34,14 @@ source $HOME/.cargo/env
 **build from source**
 
 ```bash
-git clone https://github.com/Dorlinrozin/ocs01-test-auto.git
+git clone https://github.com/Dorlinrozin/ocs01-test.git
 cd ocs01-test
 cargo build --release
 ```
 
-**setup**
+**Copy json file**
 
 ```bash
-# copy contract interface
 cp EI/exec_interface.json .
 ```
 
@@ -51,14 +50,45 @@ cp EI/exec_interface.json .
 -   wallet.json - create with your credentials
 -   exec_interface.json - copy from EI/ folder
 
-**run**
-
-you must copy the release binary to your cli folder and also copy the EI file (execution interface file) to the same location 
-
-the release binary is located in this folder after successful build. 
+you need your `wallet.json` file which has your wallet details like the last time in "octra_pre_client" dir
 ```bash
-./target/release/ocs01-test
+cd octra_pre_client
 ```
+```bash
+cp ./wallet.json ../ocs01-test
+cd ../ocs01-test
+```
+if you can't locate `wallet.json` file, just create one in `ocs01-test` dir
+```bash
+nano wallet.json
+```
+copy and edit
+```bash
+{
+  "priv": "PRIVATE_KEY",
+  "addr": "ADDRESS",
+  "rpc": "https://octra.network"
+}
+```
+press `Ctrl+X`, press `y`, then press `Enter` to save
+
+copy `EI/exec_interface.json` file to `ocs01-test`. use the following command
+```bash
+cp EI/exec_interface.json .
+```
+
+## ▶️ **How to Run**
+
+Make a Screen
+```bash
+screen -S automator
+```
+Execute the Python script:
+```bash
+python3 menu_automator.py 
+```
+Enter the number of times to repeat the test cycle and the delay in seconds between each cycle
+After running successfully close from screen with pressing `Ctrl A+D`
 
 *for this task the ei file contains the interface for contract at address octBUHw585BrAMPMLQvGuWx4vqEsybYH9N7a3WNj1WBwrDn, do not modify it*
 
