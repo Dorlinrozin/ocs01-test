@@ -89,8 +89,8 @@ python3 menu_automator.py
 ```
 The script will then prompt you to enter:
 
-1- The number of times you want the test cycle to repeat.
-2- The delay (in seconds) between each cycle.
+1. The number of times you want the test cycle to repeat.
+2. The delay (in seconds) between each cycle.
 
 The script will start the automated process, and you will see the interactions logged in your terminal.
 
