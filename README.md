@@ -1,19 +1,28 @@
-**ocs01-test**
+# OCS01 Python Test Automator
 
-rust cli for testing ocs01 smart contract
+A Python-based automation script to interact with and test the `ocs01-test` Rust CLI. Instead of manually navigating the interactive menu, this script runs the CLI as a subprocess and automates the testing of all smart contract methods defined in `exec_interface.json`.
 
-**what it does**
+This project serves as a practical example of controlling interactive command-line applications using Python, specifically designed for the Octra Labs `ocs01-test` challenge.
 
--   tests all ocs01 contract methods
--   interactive menu for easy navigation
--   shows results instantly for view methods
--   handles tx signing for call methods
+## 🚀 Features
 
-**works on**
+-   **Fully Automated**: Runs the Rust CLI and interacts with its menu without user intervention.
+-   **Dynamic Test Generation**: Automatically reads `exec_interface.json` to discover and test all available smart contract methods.
+-   **Intelligent Parameter Generation**: Creates valid test data for methods, avoiding common errors like division-by-zero.
+-   **Configurable Cycles**: Allows setting the number of test cycles and the delay between them for stress and endurance testing.
+-   **Robust Interaction**: Uses `pexpect` to reliably control the subprocess, handling prompts and outputs, even with ANSI color codes.
 
--   linux
--   macos
--   windows
+## 📋 Prerequisites
+
+-   **Linux or macOS**: The script relies on `pexpect`, which is not available on Windows.
+-   **Python 3.6+**
+-   The compiled **`ocs01-test` Rust binary** (must be executable).
+-   **Required Python libraries**:
+    ```bash
+    pip install pexpect
+    ```
+
+## ⚙️ Setup
 
 **install rust (if not installed)**
 
@@ -25,7 +34,7 @@ source $HOME/.cargo/env
 **build from source**
 
 ```bash
-git clone https://github.com/octra-labs/ocs01-test.git
+git clone https://github.com/Dorlinrozin/ocs01-test-auto.git
 cd ocs01-test
 cargo build --release
 ```
