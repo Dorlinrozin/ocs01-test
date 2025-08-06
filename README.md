@@ -39,12 +39,6 @@ cd ocs01-test
 cargo build --release
 ```
 
-**Copy json file**
-
-```bash
-cp EI/exec_interface.json .
-```
-
 **required files in same directory**
 
 -   wallet.json - create with your credentials
