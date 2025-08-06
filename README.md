@@ -77,7 +77,7 @@ copy `EI/exec_interface.json` file to `ocs01-test`. use the following command
 cp EI/exec_interface.json .
 ```
 
-## ▶️ **How to Run**
+## ▶️ How to Run
 
 Make a Screen
 ```bash
@@ -87,10 +87,24 @@ Execute the Python script:
 ```bash
 python3 menu_automator.py 
 ```
-Enter the number of times to repeat the test cycle and the delay in seconds between each cycle
+The script will then prompt you to enter:
+
+1- The number of times you want the test cycle to repeat.
+2- The delay (in seconds) between each cycle.
+
+The script will start the automated process, and you will see the interactions logged in your terminal.
 
 After running successfully close from screen with pressing `Ctrl A+D`
 
-*for this task the ei file contains the interface for contract at address octBUHw585BrAMPMLQvGuWx4vqEsybYH9N7a3WNj1WBwrDn, do not modify it*
+## 🔧 How It Works
 
-after running, follow the menu to interact with the contract
+The script uses the `pexpect` library to spawn the `ocs01-test` binary as a child process. It then automates the interaction by:
+1. **Expecting** specific patterns in the process's output (e.g., `choice:, press enter to continue...`).
+2. **Sending** the required inputs (menu numbers, parameters, confirmations) back to the process.
+3. Looping through all methods defined in `exec_interface.json` to ensure full test coverage.
+
+This approach allows for robust, automated testing of the interactive CLI without needing to re-implement its core cryptographic or networking logic.
+
+
+
+*for this task the ei file contains the interface for contract at address octBUHw585BrAMPMLQvGuWx4vqEsybYH9N7a3WNj1WBwrDn, do not modify it*
