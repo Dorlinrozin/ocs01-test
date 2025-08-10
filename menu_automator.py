@@ -159,7 +159,7 @@ def run_test_cycle(cycle_number, total_cycles):
 # ===== MAIN EXECUTION LOGIC =====
 
 def main():
-    """Main function to get user input and run test cycles."""
+    """Main function to get user input and run test cycles robustly."""
     print(f"{colors.BLUE}--- Automated Test Suite for ocs01 ---{colors.ENDC}")
     
     # --- Get user input for test configuration ---
@@ -184,17 +184,27 @@ def main():
             print(f"{colors.RED}Invalid input. Please enter a number.{colors.ENDC}")
 
     # --- Run the test cycles ---
+    successful_cycles = 0
+    failed_cycles = 0
+
     for i in range(1, num_repeats + 1):
         success = run_test_cycle(i, num_repeats)
-        if not success:
-            print(f"{colors.RED}Stopping test suite due to an error in the last cycle.{colors.ENDC}")
-            break
         
+        # KEY CHANGE: Instead of breaking, we log the failure and continue.
+        if success:
+            successful_cycles += 1
+        else:
+            failed_cycles += 1
+            print(f"{colors.RED}Cycle {i} failed. The script will continue to the next cycle after the delay.{colors.ENDC}")
+        
+        # Apply delay if it's not the last cycle
         if i < num_repeats:
             print(f"\n{colors.CYAN}Waiting for {delay_seconds} seconds before the next cycle...{colors.ENDC}")
             time.sleep(delay_seconds)
             
     print(f"\n{colors.BLUE}--- Test Suite Finished ---{colors.ENDC}")
+    print(f"{colors.GREEN}Successful cycles: {successful_cycles}{colors.ENDC}")
+    print(f"{colors.RED}Failed cycles: {failed_cycles}{colors.ENDC}")
 
 if __name__ == "__main__":
     main()
